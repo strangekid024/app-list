@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>LIST APP</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/send_url.js"></script>
+  </head>
+  <body>
+    <header>
+      <a href="/" class="header-logo">LIST APP</a>
+    </header>
+    <div class="container">
+      <div class="container-header">
+        <h1>カフェリスト</h1>
+        <a href="/new">新規作成</a>
+      </div>
+      <div class="index-table-wrapper">
+        <div class="table-head">
+          <span>店名　　　</span>
+          <span>喫煙　　　　</span>
+          <span>充電　　　　</span>
+          <span>最寄り</span>
+        </div>
+        
+        <ul class="table-body">
+          <% items.forEach((item) => { %>
+            <li>
+              <div class="item-data">
+                <span class="name-column"><%=item.name%>　</span>
+                <span class="smoke-column"><%=item.smoke%>　</span>
+                <span class= "charge-column"><%=item.charge%>　</span>
+                <span class="station-column"><%=item.station%>　</span>
+                <form action="/delete/<%=item.id%>" method="post">
+                 <input type="submit" value="削除">
+                </form>
+                <a href = "edit/<%=item.id%>">編集</a>
+              </div>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
